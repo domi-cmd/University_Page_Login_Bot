@@ -23,6 +23,13 @@ username = credentials.get('username')
 password = credentials.get('password')
 
 
+def element_locator(locating_type, adress_type, path):
+    element = WebDriverWait(driver, 10).until(
+        locating_type((adress_type, path))
+    )
+    return element
+
+
 # Set Chrome options if needed
 options = Options()
 options.add_argument("--start-maximized")
@@ -40,9 +47,13 @@ choose_uni = WebDriverWait(driver, 10).until(
 choose_uni.click()
 
 # Choose Universität Bern by its title
+'''
 unibern = WebDriverWait(driver, 10).until(
     EC.element_to_be_clickable((By.XPATH, "//*[@title='Meist benutzte Organisationen: Universität Bern']"))
     )
+'''
+unibern = element_locator(locating_type = EC.element_to_be_clickable, adress_type = By.XPATH, 
+                        path="//*[@title='Meist benutzte Organisationen: Universität Bern']")
 unibern.click()
 
 
@@ -84,10 +95,12 @@ login_button.click()
 
 
 # Find the "Arbeitsraum" button by its label
-button = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "Arbeitsraum")]'))
-    )
+#button = WebDriverWait(driver, 10).until(
+#    EC.element_to_be_clickable((By.XPATH, '//span[contains(text(), "Arbeitsraum")]'))
+#    )
 # Click the button to change its state
+button = element_locator(locating_type = EC.presence_of_element_located, adress_type = By.XPATH, 
+                       path = '//span[contains(text(), "Arbeitsraum")]')
 button.click()
 
 

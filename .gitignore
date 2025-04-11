@@ -1,5 +1,6 @@
 # USER CREDENTIALS
 code/credentials.txt
+code\credentials.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

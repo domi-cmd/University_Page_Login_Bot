@@ -39,18 +39,6 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 # Go to the login page
 driver.get('https://ilias.unibe.ch/login.php?target=&client_id=ilias3_unibe')
 
-# Wait for the login identity provider selector and click
-choose_uni = element_locator(locating_type = EC.presence_of_element_located, adress_type = By.ID, 
-                        path="user_idp_iddtext")
-
-choose_uni.click()
-
-# Choose Universität Bern by its title
-unibern = element_locator(locating_type = EC.element_to_be_clickable, adress_type = By.XPATH, 
-                        path="//*[@title='Meist benutzte Organisationen: Universität Bern']")
-unibern.click()
-
-
 # Continue to the login screen
 proceed = element_locator(locating_type = EC.presence_of_element_located, adress_type = By.ID, 
                         path='wayf_submit_button')

@@ -112,3 +112,5 @@ except WebDriverException:
 driver.quit()
 
 # The script will keep running until terminated externally
+# Exit the script and close the terminal
+exit()
